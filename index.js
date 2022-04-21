@@ -20,7 +20,7 @@ function gameBoardCreate(rows, columns) {
   for (i = 0; i < rows; i++) {
     for (j = 0; j < columns; j++) {
       const tile = document.createElement("div");
-      tile.className = "tile empty";
+      tile.className = "tile empty prev-" + playerTurn;
       tile.id = "" + i + j;
       gameBoardContainer.appendChild(tile);
     }
@@ -50,6 +50,7 @@ function victoryChecker(targetTileId) {
       }
       if (fiveInRow[index] === 5) {
         console.log(playerTurn + " Wins!");
+        highlightWinner(index, coords);
       }
     }
   }
@@ -60,5 +61,41 @@ function roundSwitch() {
     playerTurn = "circle";
   } else {
     playerTurn = "cross";
+  }
+  document.querySelectorAll(".empty").forEach(function (preview) {
+    preview.classList.toggle("prev-cross");
+  });
+  document.querySelectorAll(".empty").forEach(function (preview) {
+    preview.classList.toggle("prev-circle");
+  });
+}
+
+function highlightWinner(index, coords) {
+  let hRow = Number(coords[0]);
+  let hCol = Number(coords[1]);
+
+  for (i = 0; i < 5; i++) {
+    switch (index) {
+      case 0:
+        document
+          .getElementById("" + hRow + (hCol - i))
+          .classList.add("highlight");
+        break;
+      case 1:
+        document
+          .getElementById("" + (hRow - i) + hCol)
+          .classList.add("highlight");
+        break;
+      case 2:
+        document
+          .getElementById("" + (hRow - i) + (hCol - i))
+          .classList.add("highlight");
+        break;
+      case 3:
+        document
+          .getElementById("" + (hRow - i) + (hCol + i))
+          .classList.add("highlight");
+        break;
+    }
   }
 }

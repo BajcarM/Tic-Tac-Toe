@@ -24,10 +24,30 @@ body {
   background-color: rgb(255, 255, 255);
 }
 
-.empty:hover {
+.empty.prev-cross:hover {
   transform: scale(1.1);
   box-shadow: 2px 2px 5px;
+  opacity: 80%;
+  background-size: contain;
+  background-image: url("images/cross.png");
 }
+
+.empty.prev-circle:hover {
+  transform: scale(1.1);
+  box-shadow: 2px 2px 5px;
+  opacity: 80%;
+  background-size: contain;
+  background-image: url("images/circle.png");
+}
+/* .prev-cross {
+  background-image: url("images/cross.png");
+  
+}
+
+.prev-circle {
+  background-image: url("images/circle.png");
+  
+} */
 
 .cross {
   background-size: contain;
@@ -41,4 +61,17 @@ body {
   background-position: center;
   background-image: url("images/circle.png");
   /* background-color: rgb(94, 94, 189); */
+}
+
+.highlight {
+  transform: scale(1.2);
+  box-shadow: 2px 2px 5px;
+}
+
+.cross.highlight {
+  background-color: rgb(191, 255, 179);
+}
+
+.circle.highlight {
+  background-color: rgb(191, 255, 179);
 }
