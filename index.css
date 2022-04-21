@@ -1,0 +1,44 @@
+* {
+  margin: 0px;
+  padding: 0px;
+  box-sizing: border-box;
+}
+
+body {
+  background-color: rgb(167, 167, 167);
+}
+
+#game-board-container {
+  margin: 100px auto;
+  display: grid;
+  width: 800px;
+  height: 800px;
+  grid-template-columns: repeat(10, 1fr);
+  gap: 10px;
+  /* background-color: grey; */
+}
+
+.tile {
+  /* width: 60px;
+  height: 60px; */
+  background-color: rgb(255, 255, 255);
+}
+
+.empty:hover {
+  transform: scale(1.1);
+  box-shadow: 2px 2px 5px;
+}
+
+.cross {
+  background-size: contain;
+  background-position: center;
+  background-image: url("images/cross.png");
+  /* background-color: rgb(221, 107, 107); */
+}
+
+.circle {
+  background-size: contain;
+  background-position: center;
+  background-image: url("images/circle.png");
+  /* background-color: rgb(94, 94, 189); */
+}
