@@ -2,25 +2,32 @@
   margin: 0px;
   padding: 0px;
   box-sizing: border-box;
+  font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS", sans-serif;
 }
 
 body {
-  background-color: rgb(167, 167, 167);
+  background-color: rgb(207, 207, 207);
+}
+
+main {
+  display: flex;
 }
 
 #game-board-container {
-  margin: 100px auto;
+  margin: 50px 50px auto auto;
   display: grid;
   width: 800px;
   height: 800px;
   grid-template-columns: repeat(10, 1fr);
   gap: 10px;
-  /* background-color: grey; */
+}
+
+#menu-container {
+  margin: 200px auto auto 0px;
+  text-align: center;
 }
 
 .tile {
-  /* width: 60px;
-  height: 60px; */
   background-color: rgb(255, 255, 255);
 }
 
@@ -39,28 +46,17 @@ body {
   background-size: contain;
   background-image: url("images/circle.png");
 }
-/* .prev-cross {
-  background-image: url("images/cross.png");
-  
-}
-
-.prev-circle {
-  background-image: url("images/circle.png");
-  
-} */
 
 .cross {
   background-size: contain;
   background-position: center;
   background-image: url("images/cross.png");
-  /* background-color: rgb(221, 107, 107); */
 }
 
 .circle {
   background-size: contain;
   background-position: center;
   background-image: url("images/circle.png");
-  /* background-color: rgb(94, 94, 189); */
 }
 
 .highlight {
@@ -69,9 +65,95 @@ body {
 }
 
 .cross.highlight {
-  background-color: rgb(191, 255, 179);
+  background-color: rgb(255, 207, 207);
 }
 
 .circle.highlight {
-  background-color: rgb(191, 255, 179);
+  background-color: rgb(207, 234, 255);
+}
+
+.modal-content {
+  display: none;
+  width: 100%;
+  height: 400px;
+  background-color: white;
+  opacity: 90%;
+  margin-top: 300px;
+  position: fixed;
+  top: 0px;
+  right: 0px;
+  /* display: grid; */
+  place-items: center;
+}
+
+.modal-div {
+  margin: auto;
+  margin-bottom: 10px;
+  display: flex;
+  align-items: center;
+}
+
+.modal-icon {
+  background-image: url("images/circle.png");
+  background-size: contain;
+  background-position: center;
+  height: 100px;
+  width: 100px;
+  display: inline-block;
+}
+
+.modal-text {
+  display: inline-block;
+  text-align: center;
+  vertical-align: middle;
+  font-size: 3rem;
+}
+
+.modal-button {
+  height: 70px;
+  width: 200px;
+  margin: auto;
+  font-size: 1.5rem;
+  background-color: white;
+}
+
+.button-start {
+  height: 70px;
+  width: 200px;
+  margin: 50px auto;
+  font-size: 1.5rem;
+  background-color: white;
+}
+
+.score {
+  font-size: 4rem;
+  margin: 50px auto;
+}
+
+#player-cross-div,
+#player-circle-div {
+  font-size: 3rem;
+  display: flex;
+  align-items: center;
+}
+
+#score-icon-cross {
+  height: 4rem;
+  width: 4rem;
+  background-size: contain;
+  background-position: center;
+  background-image: url("images/cross.png");
+}
+
+#score-icon-circle {
+  height: 4rem;
+  width: 4rem;
+  background-size: contain;
+  background-position: center;
+  background-image: url("images/circle.png");
+}
+
+#score-count-cross,
+#score-count-circle {
+  margin: auto auto auto 20px;
 }

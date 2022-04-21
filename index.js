@@ -1,18 +1,37 @@
 let playerTurn = "cross";
 
 gameBoardCreate(10, 10);
+makeTilesClickable();
 
-document.querySelectorAll(".tile").forEach(function (tileClicked) {
-  tileClicked.addEventListener("click", function (e) {
-    if (e.currentTarget.classList.contains("empty")) {
-      e.currentTarget.classList.add(playerTurn);
-      e.currentTarget.classList.remove("empty");
-      victoryChecker(e.currentTarget.id);
-      roundSwitch();
-    }
-    console.log(e.currentTarget.id);
+document.querySelector(".modal-button").addEventListener("click", function () {
+  playerTurn = "cross";
+  gameBoardCreate(10, 10);
+  document.querySelector(".modal-content").style.display = "none";
+  makeTilesClickable();
+});
+
+document.querySelector(".button-start").addEventListener("click", function () {
+  playerTurn = "cross";
+  gameBoardCreate(10, 10);
+  makeTilesClickable();
+  document.querySelectorAll(".score-count").forEach(function (score) {
+    score.textContent = 0;
   });
 });
+
+function makeTilesClickable() {
+  document.querySelectorAll(".tile").forEach(function (tileClicked) {
+    tileClicked.addEventListener("click", function (e) {
+      if (e.currentTarget.classList.contains("empty")) {
+        e.currentTarget.classList.add(playerTurn);
+        e.currentTarget.classList.remove("empty");
+        victoryChecker(e.currentTarget.id);
+        roundSwitch();
+      }
+      console.log(e.currentTarget.id);
+    });
+  });
+}
 
 function gameBoardCreate(rows, columns) {
   const gameBoardContainer = document.getElementById("game-board-container");
@@ -51,6 +70,7 @@ function victoryChecker(targetTileId) {
       if (fiveInRow[index] === 5) {
         console.log(playerTurn + " Wins!");
         highlightWinner(index, coords);
+        endGame();
       }
     }
   }
@@ -98,4 +118,16 @@ function highlightWinner(index, coords) {
         break;
     }
   }
+}
+
+function endGame() {
+  document.querySelectorAll(".empty").forEach(function (empty) {
+    empty.classList.remove("empty");
+  });
+  document.getElementById("score-count-" + playerTurn).textContent++;
+  document.querySelector(".modal-content").style.display = "grid";
+  document.querySelector(".modal-icon").style.backgroundImage =
+    "url('images/" + playerTurn + ".png')";
+  document.querySelector(".modal-text").textContent =
+    playerTurn.toUpperCase() + " WINS!";
 }

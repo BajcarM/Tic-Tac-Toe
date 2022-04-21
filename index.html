@@ -11,8 +11,29 @@
   <body>
     <main>
       <div id="game-board-container"></div>
-      <div id="buttons">
-        <button class="btn" id="button-start">NEW GAME</button>
+      <div id="menu-container">
+        <div id="score-div">
+          <div class="score">SCORE:</div>
+          <div id="player-cross-div">
+            <div id="score-icon-cross"></div>
+            <div class="score-count" id="score-count-cross">0</div>
+          </div>
+          <div id="player-circle-div">
+            <div id="score-icon-circle"></div>
+            <div class="score-count" id="score-count-circle">0</div>
+          </div>
+        </div>
+        <div id="buttons">
+          <button class="button-start">NEW GAME</button>
+        </div>
+      </div>
+      <div class="modal-content">
+        <div class="modal-div">
+          <div class="modal-icon"></div>
+          <div class="modal-text">CIRCLE WINS!</div>
+        </div>
+
+        <button class="modal-button">NEXT ROUND</button>
       </div>
     </main>
     <script src="index.js"></script>
