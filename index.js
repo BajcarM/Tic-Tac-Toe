@@ -28,7 +28,6 @@ function makeTilesClickable() {
         victoryChecker(e.currentTarget.id);
         roundSwitch();
       }
-      console.log(e.currentTarget.id);
     });
   });
 }
@@ -44,6 +43,7 @@ function gameBoardCreate(rows, columns) {
       gameBoardContainer.appendChild(tile);
     }
   }
+  turnReset();
 }
 
 function victoryChecker(targetTileId) {
@@ -88,6 +88,8 @@ function roundSwitch() {
   document.querySelectorAll(".empty").forEach(function (preview) {
     preview.classList.toggle("prev-circle");
   });
+  document.querySelector(".turn-icon").classList.toggle("score-icon-cross");
+  document.querySelector(".turn-icon").classList.toggle("score-icon-circle");
 }
 
 function highlightWinner(index, coords) {
@@ -130,4 +132,10 @@ function endGame() {
     "url('images/" + playerTurn + ".png')";
   document.querySelector(".modal-text").textContent =
     playerTurn.toUpperCase() + " WINS!";
+}
+
+function turnReset() {
+  document.querySelector(".turn-icon").classList.remove("score-icon-cross");
+  document.querySelector(".turn-icon").classList.remove("score-icon-circle");
+  document.querySelector(".turn-icon").classList.add("score-icon-cross");
 }
