@@ -34,7 +34,7 @@ function makeTilesClickable() {
 }
 
 function gameBoardCreate(rows, columns) {
-  const gameBoardContainer = document.getElementById("game-board-container");
+  const gameBoardContainer = document.getElementById("game-board");
   gameBoardContainer.innerHTML = "";
   for (i = 0; i < rows; i++) {
     for (j = 0; j < columns; j++) {
