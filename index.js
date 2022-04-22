@@ -38,12 +38,16 @@ function gameBoardCreate(rows, columns) {
   for (i = 0; i < rows; i++) {
     for (j = 0; j < columns; j++) {
       const tile = document.createElement("div");
-      tile.className = "tile empty prev-" + playerTurn;
+      tile.className = "tile empty";
       tile.id = "" + i + j;
       gameBoardContainer.appendChild(tile);
     }
   }
-  turnReset();
+  document.querySelector(".turn-icon").style.backgroundImage =
+    "url('images/" + playerTurn + ".png')";
+  document.querySelectorAll(".empty").forEach(function (preview) {
+    preview.style.backgroundImage = "url('images/" + playerTurn + ".png')";
+  });
 }
 
 function victoryChecker(targetTileId) {
@@ -82,14 +86,19 @@ function roundSwitch() {
   } else {
     playerTurn = "cross";
   }
+
+  // document.querySelectorAll(".empty").forEach(function (preview) {
+  //   preview.classList.toggle("prev-cross");
+  // });
+  // document.querySelectorAll(".empty").forEach(function (preview) {
+  //   preview.classList.toggle("prev-circle");
+  // });
   document.querySelectorAll(".empty").forEach(function (preview) {
-    preview.classList.toggle("prev-cross");
+    preview.style.backgroundImage = "url('images/" + playerTurn + ".png')";
   });
-  document.querySelectorAll(".empty").forEach(function (preview) {
-    preview.classList.toggle("prev-circle");
-  });
-  document.querySelector(".turn-icon").classList.toggle("score-icon-cross");
-  document.querySelector(".turn-icon").classList.toggle("score-icon-circle");
+
+  document.querySelector(".turn-icon").style.backgroundImage =
+    "url('images/" + playerTurn + ".png')";
 }
 
 function highlightWinner(index, coords) {
@@ -132,10 +141,4 @@ function endGame() {
     "url('images/" + playerTurn + ".png')";
   document.querySelector(".modal-text").textContent =
     playerTurn.toUpperCase() + " WINS!";
-}
-
-function turnReset() {
-  document.querySelector(".turn-icon").classList.remove("score-icon-cross");
-  document.querySelector(".turn-icon").classList.remove("score-icon-circle");
-  document.querySelector(".turn-icon").classList.add("score-icon-cross");
 }

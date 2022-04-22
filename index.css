@@ -54,9 +54,17 @@ main {
 
 .tile {
   background-color: rgb(255, 255, 255);
+  background-size: 0px;
 }
 
-.empty.prev-cross:hover {
+.empty:hover {
+  transform: scale(1.1);
+  box-shadow: 2px 2px 5px;
+  opacity: 80%;
+  background-size: contain;
+}
+
+/* .empty.prev-cross:hover {
   transform: scale(1.1);
   box-shadow: 2px 2px 5px;
   opacity: 80%;
@@ -70,7 +78,7 @@ main {
   opacity: 80%;
   background-size: contain;
   background-image: url("images/circle.png");
-}
+} */
 
 .cross {
   background-size: contain;
@@ -190,6 +198,8 @@ main {
 .turn-icon {
   height: 3rem;
   width: 3rem;
+  background-size: contain;
+  background-position: center;
 }
 
 @media (orientation: portrait) {
