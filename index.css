@@ -10,20 +10,26 @@ body {
 }
 
 main {
-  display: flex;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
   padding-top: 50px;
   height: 100%;
+  place-items: center;
 }
 
 #turn {
-  display: none;
+  display: flex;
+  grid-area: 1/2;
+  place-items: center;
+  font-size: 2rem;
 }
 
 #game-board-container {
   /* display: grid; */
   margin: auto;
   position: relative;
-  width: 50%;
+  width: 90%;
+  grid-area: 1/1/3/1;
 }
 
 #game-board-container:after {
@@ -33,7 +39,6 @@ main {
 }
 
 #game-board {
-  margin-left: 100px auto;
   display: grid;
   width: 100%;
   height: 100%;
@@ -50,6 +55,7 @@ main {
   margin: auto;
   text-align: center;
   display: block;
+  grid-area: 2/2;
 }
 
 .tile {
@@ -209,7 +215,7 @@ main {
   }
 
   #game-board-container {
-    width: 90%;
+    width: 80%;
   }
 
   #score-div {
